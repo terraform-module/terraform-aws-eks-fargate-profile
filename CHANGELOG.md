@@ -3,20 +3,17 @@
 
 
 
-<a name="v0.2.0"></a>
-## [v0.2.0] - 2019-09-15
-
-- update licence
+<a name="v2.1.0"></a>
+## [v2.1.0] - 0001-01-01
 
 
-<a name="v0.1.0"></a>
-## v0.1.0 - 2019-09-15
 
-- setup project blueprint
-- setup project blueprint
-- setup project blueprint
+<a name="v2.0.0"></a>
+## v2.0.0 - 2019-12-14
+
+- initial version of eks profile setup
 - Initial commit
 
 
-[Unreleased]: https://github.com/terraform-module/TODO/compare/v0.2.0...HEAD
-[v0.2.0]: https://github.com/terraform-module/TODO/compare/v0.1.0...v0.2.0
+[Unreleased]: https://github.com/terraform-module/TODO/compare/v2.1.0...HEAD
+[v2.1.0]: https://github.com/terraform-module/TODO/compare/v2.0.0...v2.1.0
