@@ -11,9 +11,10 @@ Based on [Terraform Resource](https://www.terraform.io/docs/providers/aws/r/eks_
 Here's the gist of using it directly from github.
 
 ```hcl
-
     module "eks_fargate" {
-      source               = "git::https://github.com/terraform-module/terraform-aws-eks-fargate-profile.git?ref=master"
+      source  = "terraform-module/eks-fargate-profile/aws"
+      version = "2.1.0"
+
       tags                 = var.tags
       subnet_ids           = var.subnet_ids
       cluster_name         = var.cluster_name
@@ -29,16 +30,31 @@ Here's the gist of using it directly from github.
 ## Module Variables
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.2 |
+| aws | >= 2.5 |
+| random | ~> 2.1 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | >= 2.5 |
+| random | ~> 2.1 |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| cluster\_name | Cluster name | string | n/a | yes |
-| enabled | Whether to create the resources. Set to `false` to prevent the module from creating any resources | bool | `"true"` | no |
-| labels | Key-value mapping of Kubernetes labels for selection | map(string) | `{}` | no |
-| namespace | Kubernetes namespace for selection | string | n/a | yes |
-| subnet\_ids | Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER_NAME (where CLUSTER_NAME is replaced with the name of the EKS Cluster) | list(string) | n/a | yes |
-| tags | Additional tags (e.g. `{ Deployed = "xxxx" }` | map(string) | `{}` | no |
+|------|-------------|------|---------|:--------:|
+| cluster\_name | Cluster name | `string` | n/a | yes |
+| enabled | Whether to create the resources. Set to `false` to prevent the module from creating any resources | `bool` | `true` | no |
+| labels | Key-value mapping of Kubernetes labels for selection | `map(string)` | `{}` | no |
+| namespace | Kubernetes namespace for selection | `string` | n/a | yes |
+| subnet\_ids | Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER\_NAME (where CLUSTER\_NAME is replaced with the name of the EKS Cluster) | `list(string)` | n/a | yes |
+| tags | Additional tags (e.g. `{ Deployed = "xxxx" }` | `map(string)` | `{}` | no |
 
 ## Outputs
 
@@ -56,11 +72,11 @@ Here's the gist of using it directly from github.
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
 changelog                      Update changelog
-release                        Create release version 
+release                        Create release version
 ```
 <!-- END makefile-doc -->
 
@@ -78,3 +94,7 @@ Submit a pull request
 # Authors
 
 Currently maintained by [Ivan Katliarchuk](https://github.com/ivankatliarchuk) and these [awesome contributors](https://github.com/terraform-module/terraform-module-blueprint/graphs/contributors).
+
+## Terraform Registry
+
+- [Module](https://registry.terraform.io/modules/terraform-module/eks-fargate-profile/aws)

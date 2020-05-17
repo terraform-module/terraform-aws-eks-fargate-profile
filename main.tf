@@ -1,3 +1,12 @@
+provider "random" {
+  version = "~> 2.1"
+}
+
+resource "random_string" "suffix" {
+  length  = 4
+  special = false
+}
+
 data aws_iam_policy_document assume_role {
   count = var.enabled ? 1 : 0
 
@@ -14,11 +23,11 @@ data aws_iam_policy_document assume_role {
 
 resource aws_iam_role this {
   count              = var.enabled ? 1 : 0
-  name               = format("%s-fargate-%s", var.cluster_name, var.namespace)
+  name               = format("%s-fargate-%s-%s", var.cluster_name, var.namespace, random_string.suffix.result)
   assume_role_policy = join("", data.aws_iam_policy_document.assume_role.*.json)
   tags = merge(var.tags,
     { Namespace = var.namespace },
-  { "kubernetes.io/cluster/${var.cluster_name}" = "owned" })
+  { "k8s.io/cluster/${var.cluster_name}" = "owned" })
 }
 
 resource aws_iam_role_policy_attachment attachment_main {
@@ -35,7 +44,8 @@ resource aws_eks_fargate_profile this {
   subnet_ids             = var.subnet_ids
   tags = merge(var.tags,
     { Namespace = var.namespace },
-  { "kubernetes.io/cluster/${var.cluster_name}" = "owned" })
+    { "kubernetes.io/cluster/${var.cluster_name}" = "owned" },
+  { "k8s.io/cluster/${var.cluster_name}" = "owned" })
 
   selector {
     namespace = var.namespace
