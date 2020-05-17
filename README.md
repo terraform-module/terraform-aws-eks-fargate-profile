@@ -17,8 +17,8 @@ Here's the gist of using it directly from github.
       tags                 = var.tags
       subnet_ids           = var.subnet_ids
       cluster_name         = var.cluster_name
-      kubernetes_namespace = var.namespace
-      kubernetes_labels    = var.labels
+      namespace            = var.namespace
+      labels               = var.labels
     }
 ```
 
