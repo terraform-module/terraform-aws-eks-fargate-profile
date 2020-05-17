@@ -30,3 +30,10 @@ variable "labels" {
   description = "Key-value mapping of Kubernetes labels for selection"
   default     = {}
 }
+
+
+variable "suffix" {
+  type        = string
+  description = "Suffix added to the name. In case we need more then one profile in same namespace"
+  default     = ""
+}

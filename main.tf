@@ -1,14 +1,6 @@
 locals {
-  name = format("%s-fargate-%s", var.cluster_name, var.namespace)
-}
-
-provider "random" {
-  version = "~> 2.1"
-}
-
-resource "random_string" "suffix" {
-  length  = 4
-  special = false
+  name   = format("%s-fargate-%s", var.cluster_name, var.namespace)
+  suffix = length(var.suffix) > 0 ? format("-%s", var.suffix) : ""
 }
 
 data aws_iam_policy_document assume_role {
@@ -27,7 +19,7 @@ data aws_iam_policy_document assume_role {
 
 resource aws_iam_role this {
   count              = var.enabled ? 1 : 0
-  name               = format("%s-%s", local.name, random_string.suffix.result)
+  name               = format("%s-%s", local.name, local.suffix)
   assume_role_policy = join("", data.aws_iam_policy_document.assume_role.*.json)
   tags = merge(var.tags,
     { Namespace = var.namespace },
@@ -43,7 +35,7 @@ resource aws_iam_role_policy_attachment attachment_main {
 resource aws_eks_fargate_profile this {
   count                  = var.enabled ? 1 : 0
   cluster_name           = var.cluster_name
-  fargate_profile_name   = format("%s-%s", local.name, random_string.suffix.result)
+  fargate_profile_name   = format("%s-%s", local.name, local.suffix)
   pod_execution_role_arn = join("", aws_iam_role.this.*.arn)
   subnet_ids             = var.subnet_ids
   tags = merge(var.tags,

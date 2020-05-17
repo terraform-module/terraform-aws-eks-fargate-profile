@@ -36,14 +36,12 @@ Here's the gist of using it directly from github.
 |------|---------|
 | terraform | >= 0.12.2 |
 | aws | >= 2.5 |
-| random | ~> 2.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | aws | >= 2.5 |
-| random | ~> 2.1 |
 
 ## Inputs
 
@@ -54,6 +52,7 @@ Here's the gist of using it directly from github.
 | labels | Key-value mapping of Kubernetes labels for selection | `map(string)` | `{}` | no |
 | namespace | Kubernetes namespace for selection | `string` | n/a | yes |
 | subnet\_ids | Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER\_NAME (where CLUSTER\_NAME is replaced with the name of the EKS Cluster) | `list(string)` | n/a | yes |
+| suffix | Suffix added to the name. In case we need more then one profile in same namespace | `string` | `""` | no |
 | tags | Additional tags (e.g. `{ Deployed = "xxxx" }` | `map(string)` | `{}` | no |
 
 ## Outputs
