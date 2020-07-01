@@ -20,7 +20,7 @@ resource aws_iam_role this {
   #count              = var.enabled ? 1 : 0
   for_each           = toset(var.namespaces)
   name               = format("%s-fargate-%s%s", var.cluster_name, each.value, local.suffix)
-  assume_role_policy = join("", data.aws_iam_policy_document.assume_role.json)
+  assume_role_policy =  data.aws_iam_policy_document.assume_role.json
   tags = merge(var.tags,
     { Namespace = each.value },
     { "kubernetes.io/cluster/${var.cluster_name}" = "owned" },
