@@ -20,9 +20,9 @@ variable "tags" {
   description = "Additional tags (e.g. `{ Deployed = \"xxxx\" }`"
 }
 
-variable "namespace" {
-  type        = string
-  description = "Kubernetes namespace for selection"
+variable "namespaces" {
+  type        = list(string)
+  description = "Kubernetes namespace(s) for selection.  Adding more than one namespace, creates and manages multiple namespaces."
 }
 
 variable "labels" {
