@@ -29,8 +29,9 @@ resource aws_iam_role this {
 
 resource aws_iam_role_policy_attachment attachment_main {
   #count      = var.enabled ? 1 : 0
+  for_each   = toset(var.namespaces)
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
-  role       = join("", aws_iam_role.this[*].name)
+  role       = aws_iam_role.this[each.value].name
 }
 
 resource aws_eks_fargate_profile this {
@@ -38,7 +39,7 @@ resource aws_eks_fargate_profile this {
   for_each               = toset(var.namespaces)
   cluster_name           = var.cluster_name
   fargate_profile_name   = format("%s-fargate-%s%s", var.cluster_name, each.value, local.suffix)
-  pod_execution_role_arn = join("", aws_iam_role.this[*].arn)
+  pod_execution_role_arn = aws_iam_role.this[each.value].arn
   subnet_ids             = var.subnet_ids
 
   tags = merge(var.tags,
