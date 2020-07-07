@@ -3,8 +3,6 @@ locals {
 }
 
 data aws_iam_policy_document assume_role {
-  #count = var.enabled ? 1 : 0
-
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
@@ -17,7 +15,6 @@ data aws_iam_policy_document assume_role {
 }
 
 resource aws_iam_role this {
-  #count              = var.enabled ? 1 : 0
   for_each           = toset(var.namespaces)
   name               = format("%s-fargate-%s%s", var.cluster_name, each.value, local.suffix)
   assume_role_policy =  data.aws_iam_policy_document.assume_role.json
@@ -28,14 +25,12 @@ resource aws_iam_role this {
 }
 
 resource aws_iam_role_policy_attachment attachment_main {
-  #count      = var.enabled ? 1 : 0
   for_each   = toset(var.namespaces)
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
   role       = aws_iam_role.this[each.value].name
 }
 
 resource aws_eks_fargate_profile this {
-  #count                  = var.enabled ? 1 : 0
   for_each               = toset(var.namespaces)
   cluster_name           = var.cluster_name
   fargate_profile_name   = format("%s-fargate-%s%s", var.cluster_name, each.value, local.suffix)
