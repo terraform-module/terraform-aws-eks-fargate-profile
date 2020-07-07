@@ -1,9 +1,3 @@
-variable "enabled" {
-  type        = bool
-  description = "Whether to create the resources. Set to `false` to prevent the module from creating any resources"
-  default     = true
-}
-
 variable "cluster_name" {
   type        = string
   description = "Cluster name"
