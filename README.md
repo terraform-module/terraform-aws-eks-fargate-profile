@@ -1,8 +1,6 @@
 # terraform-aws-eks-fargate-profile
 
-Terraform module to provision an EKS Node Group for [Elastic Container Service for Kubernetes](https://aws.amazon.com/eks/).
-
-Instantiate it multiple times to create many EKS node groups with specific settings such as GPUs, EC2 instance types, or autoscale parameters.
+Terraform module to provision an EKS Fargate Profiles for [Elastic Container Service for Kubernetes](https://aws.amazon.com/eks/).
 
 Based on [Terraform Resource](https://www.terraform.io/docs/providers/aws/r/eks_fargate_profile.html)
 
@@ -18,7 +16,7 @@ Here's the gist of using it directly from github.
       tags                 = var.tags
       subnet_ids           = var.subnet_ids
       cluster_name         = var.cluster_name
-      namespace            = var.namespace
+      namespaces            = var.namespaces
       labels               = var.labels
     }
 ```
@@ -48,9 +46,8 @@ Here's the gist of using it directly from github.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | cluster\_name | Cluster name | `string` | n/a | yes |
-| enabled | Whether to create the resources. Set to `false` to prevent the module from creating any resources | `bool` | `true` | no |
 | labels | Key-value mapping of Kubernetes labels for selection | `map(string)` | `{}` | no |
-| namespace | Kubernetes namespace for selection | `string` | n/a | yes |
+| namespaces | Kubernetes namespaces for selection (set to an empty string to disable resource creation) | `list(string)` | n/a | yes |
 | subnet\_ids | Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER\_NAME (where CLUSTER\_NAME is replaced with the name of the EKS Cluster) | `list(string)` | n/a | yes |
 | suffix | Suffix added to the name. In case we need more then one profile in same namespace | `string` | `""` | no |
 | tags | Additional tags (e.g. `{ Deployed = "xxxx" }` | `map(string)` | `{}` | no |
