@@ -4,6 +4,24 @@ Terraform module to provision an EKS Fargate Profiles for [Elastic Container Ser
 
 Based on [Terraform Resource](https://www.terraform.io/docs/providers/aws/r/eks_fargate_profile.html)
 
+[![](https://img.shields.io/github/license/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/eks-fargate-profile)
+![](https://img.shields.io/github/v/tag/terraform-module/eks-fargate-profile)
+[![](https://img.shields.io/github/workflow/status/terraform-module/eks-fargate-profile/commit-check/master)](https://github.com/terraform-module/eks-fargate-profile/actions?query=is%3Acompleted)
+![](https://github.com/terraform-module/eks-fargate-profile/workflows/commit-check/badge.svg)
+![](https://github.com/terraform-module/eks-fargate-profile/workflows/Labeler/badge.svg)
+![](https://img.shields.io/issues/github/terraform-module/eks-fargate-profile)
+![](https://img.shields.io/github/issues/terraform-module/eks-fargate-profile)
+![](https://img.shields.io/github/issues-closed/terraform-module/eks-fargate-profile)
+[![](https://img.shields.io/github/languages/code-size/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/eks-fargate-profile)
+[![](https://img.shields.io/github/repo-size/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/eks-fargate-profile)
+![](https://img.shields.io/github/languages/top/terraform-module/eks-fargate-profile?color=green&logo=terraform&logoColor=blue)
+![](https://img.shields.io/github/commit-activity/m/terraform-module/eks-fargate-profile)
+![](https://img.shields.io/github/contributors/terraform-module/eks-fargate-profile)
+![](https://img.shields.io/github/last-commit/terraform-module/eks-fargate-profile)
+[![Maintenance](https://img.shields.io/badge/Maintenu%3F-oui-green.svg)](https://GitHub.com/terraform-module/eks-fargate-profile/graphs/commit-activity)
+[![GitHub forks](https://img.shields.io/github/forks/terraform-module/eks-fargate-profile.svg?style=social&label=Fork)](https://github.com/terraform-module/eks-fargate-profile)
+
+
 ## Usage example
 
 Here's the gist of using it directly from github.
@@ -11,13 +29,18 @@ Here's the gist of using it directly from github.
 ```hcl
     module "eks_fargate" {
       source  = "terraform-module/eks-fargate-profile/aws"
-      version = "2.1.0"
+      version = "2.2.0"
 
-      tags                 = var.tags
-      subnet_ids           = var.subnet_ids
-      cluster_name         = var.cluster_name
-      namespaces            = var.namespaces
-      labels               = var.labels
+      cluster_name         = "my-cluster-name"
+      subnet_ids           = ["subnet-xxx"]
+      namespaces           = ["default"]
+      labels = {
+        "app.kubernetes.io/name" = "default-service"
+       }
+       tags = {
+        "ENV" = "dev"
+       }
+
     }
 ```
 
@@ -47,7 +70,7 @@ Here's the gist of using it directly from github.
 |------|-------------|------|---------|:--------:|
 | cluster\_name | Cluster name | `string` | n/a | yes |
 | labels | Key-value mapping of Kubernetes labels for selection | `map(string)` | `{}` | no |
-| namespaces | Kubernetes namespaces for selection (set to an empty string to disable resource creation) | `list(string)` | n/a | yes |
+| namespaces | Kubernetes namespace(s) for selection.  Adding more than one namespace, creates and manages multiple namespaces. | `list(string)` | n/a | yes |
 | subnet\_ids | Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER\_NAME (where CLUSTER\_NAME is replaced with the name of the EKS Cluster) | `list(string)` | n/a | yes |
 | suffix | Suffix added to the name. In case we need more then one profile in same namespace | `string` | `""` | no |
 | tags | Additional tags (e.g. `{ Deployed = "xxxx" }` | `map(string)` | `{}` | no |
@@ -68,11 +91,10 @@ Here's the gist of using it directly from github.
 
 <!-- START makefile-doc -->
 ```
-$ make help
+$ make help 
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
-changelog                      Update changelog
-release                        Create release version
+changelog                      Update changelog 
 ```
 <!-- END makefile-doc -->
 
@@ -89,7 +111,7 @@ Submit a pull request
 
 # Authors
 
-Currently maintained by [Ivan Katliarchuk](https://github.com/ivankatliarchuk) and these [awesome contributors](https://github.com/terraform-module/terraform-module-blueprint/graphs/contributors).
+Currently maintained by [Ivan Katliarchuk](https://github.com/ivankatliarchuk) and these [awesome contributors](https://github.com/terraform-module/eks-fargate-profile/graphs/contributors).
 
 ## Terraform Registry
 
