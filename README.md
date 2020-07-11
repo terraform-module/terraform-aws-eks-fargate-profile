@@ -4,22 +4,22 @@ Terraform module to provision an EKS Fargate Profiles for [Elastic Container Ser
 
 Based on [Terraform Resource](https://www.terraform.io/docs/providers/aws/r/eks_fargate_profile.html)
 
-[![](https://img.shields.io/github/license/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/eks-fargate-profile)
-![](https://img.shields.io/github/v/tag/terraform-module/eks-fargate-profile)
-[![](https://img.shields.io/github/workflow/status/terraform-module/eks-fargate-profile/commit-check/master)](https://github.com/terraform-module/eks-fargate-profile/actions?query=is%3Acompleted)
-![](https://github.com/terraform-module/eks-fargate-profile/workflows/commit-check/badge.svg)
-![](https://github.com/terraform-module/eks-fargate-profile/workflows/Labeler/badge.svg)
-![](https://img.shields.io/issues/github/terraform-module/eks-fargate-profile)
-![](https://img.shields.io/github/issues/terraform-module/eks-fargate-profile)
-![](https://img.shields.io/github/issues-closed/terraform-module/eks-fargate-profile)
-[![](https://img.shields.io/github/languages/code-size/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/eks-fargate-profile)
-[![](https://img.shields.io/github/repo-size/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/eks-fargate-profile)
-![](https://img.shields.io/github/languages/top/terraform-module/eks-fargate-profile?color=green&logo=terraform&logoColor=blue)
-![](https://img.shields.io/github/commit-activity/m/terraform-module/eks-fargate-profile)
-![](https://img.shields.io/github/contributors/terraform-module/eks-fargate-profile)
-![](https://img.shields.io/github/last-commit/terraform-module/eks-fargate-profile)
-[![Maintenance](https://img.shields.io/badge/Maintenu%3F-oui-green.svg)](https://GitHub.com/terraform-module/eks-fargate-profile/graphs/commit-activity)
-[![GitHub forks](https://img.shields.io/github/forks/terraform-module/eks-fargate-profile.svg?style=social&label=Fork)](https://github.com/terraform-module/eks-fargate-profile)
+[![](https://img.shields.io/github/license/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile)
+![](https://img.shields.io/github/v/tag/terraform-module/terraform-aws-eks-fargate-profile)
+[![](https://img.shields.io/github/workflow/status/terraform-module/terraform-aws-eks-fargate-profile/commit-check/master)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile/actions?query=is%3Acompleted)
+![](https://github.com/terraform-module/terraform-aws-eks-fargate-profile/workflows/commit-check/badge.svg)
+![](https://github.com/terraform-module/terraform-aws-eks-fargate-profile/workflows/Labeler/badge.svg)
+![](https://img.shields.io/issues/github/terraform-module/terraform-aws-eks-fargate-profile)
+![](https://img.shields.io/github/issues/terraform-module/terraform-aws-eks-fargate-profile)
+![](https://img.shields.io/github/issues-closed/terraform-module/terraform-aws-eks-fargate-profile)
+[![](https://img.shields.io/github/languages/code-size/terraform-module/terraform-aws-eks-fargate-profile)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile)
+[![](https://img.shields.io/github/repo-size/terraform-module/terraform-aws-eks-fargate-profile)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile)
+![](https://img.shields.io/github/languages/top/terraform-module/terraform-aws-eks-fargate-profile?color=green&logo=terraform&logoColor=blue)
+![](https://img.shields.io/github/commit-activity/m/terraform-module/terraform-aws-eks-fargate-profile)
+![](https://img.shields.io/github/contributors/terraform-module/terraform-aws-eks-fargate-profile)
+![](https://img.shields.io/github/last-commit/terraform-module/terraform-aws-eks-fargate-profile)
+[![Maintenance](https://img.shields.io/badge/Maintenu%3F-oui-green.svg)](https://GitHub.com/terraform-module/terraform-aws-eks-fargate-profile/graphs/commit-activity)
+[![GitHub forks](https://img.shields.io/github/forks/terraform-module/terraform-aws-eks-fargate-profile.svg?style=social&label=Fork)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile)
 
 
 ## Usage example
@@ -91,10 +91,10 @@ Here's the gist of using it directly from github.
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
-changelog                      Update changelog 
+changelog                      Update changelog
 ```
 <!-- END makefile-doc -->
 
