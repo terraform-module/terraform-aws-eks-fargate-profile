@@ -4,7 +4,7 @@ Terraform module to provision an EKS Fargate Profiles for [Elastic Container Ser
 
 Based on [Terraform Resource](https://www.terraform.io/docs/providers/aws/r/eks_fargate_profile.html)
 
-[![](https://img.shields.io/github/license/terraform-module/eks-fargate-profile)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile)
+[![](https://img.shields.io/github/license/terraform-module/terraform-eks-fargate-profile)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile)
 ![](https://img.shields.io/github/v/tag/terraform-module/terraform-aws-eks-fargate-profile)
 [![](https://img.shields.io/github/workflow/status/terraform-module/terraform-aws-eks-fargate-profile/commit-check/master)](https://github.com/terraform-module/terraform-aws-eks-fargate-profile/actions?query=is%3Acompleted)
 ![](https://github.com/terraform-module/terraform-aws-eks-fargate-profile/workflows/commit-check/badge.svg)
@@ -98,6 +98,12 @@ changelog                      Update changelog
 ```
 <!-- END makefile-doc -->
 
+### :memo: Guidelines
+
+ - :memo: Use a succinct title and description.
+ - :bug: Bugs & feature requests can be be opened
+ - :signal_strength: Support questions are better asked on [Stack Overflow](https://stackoverflow.com/)
+ - :blush: Be nice, civil and polite ([as always](http://contributor-covenant.org/version/1/4/)).
 
 ## License
 
