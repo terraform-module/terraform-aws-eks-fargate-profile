@@ -98,6 +98,12 @@ changelog                      Update changelog
 ```
 <!-- END makefile-doc -->
 
+### :memo: Guidelines
+
+ - :memo: Use a succinct title and description.
+ - :bug: Bugs & feature requests can be be opened
+ - :signal_strength: Support questions are better asked on [Stack Overflow](https://stackoverflow.com/)
+ - :blush: Be nice, civil and polite ([as always](http://contributor-covenant.org/version/1/4/)).
 
 ## License
 
