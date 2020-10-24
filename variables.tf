@@ -25,6 +25,11 @@ variable "labels" {
   default     = {}
 }
 
+variable "prefix" {
+  type        = string
+  description = "Prefix added to the name. In case your cluster name begins with a reserved string (e.g. `eks-`)."
+  default     = ""
+}
 
 variable "suffix" {
   type        = string

@@ -1,6 +1,8 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- add prefix as option for fargate profile.
+
 
 
 <a name="v2.2.0"></a>

@@ -1,4 +1,5 @@
 locals {
+  prefix = length(var.prefix) > 0 ? format("%s-", var.prefix) : ""
   suffix = length(var.suffix) > 0 ? format("-%s", var.suffix) : ""
 }
 
@@ -16,7 +17,7 @@ data aws_iam_policy_document assume_role {
 
 resource aws_iam_role this {
   for_each           = toset(var.namespaces)
-  name               = format("%s-fargate-%s%s", var.cluster_name, each.value, local.suffix)
+  name               = format("%s%s-fargate-%s%s", local.prefix, var.cluster_name, each.value, local.suffix)
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
   tags = merge(var.tags,
     { Namespace = each.value },
@@ -33,7 +34,7 @@ resource aws_iam_role_policy_attachment attachment_main {
 resource aws_eks_fargate_profile this {
   for_each               = toset(var.namespaces)
   cluster_name           = var.cluster_name
-  fargate_profile_name   = format("%s-fargate-%s%s", var.cluster_name, each.value, local.suffix)
+  fargate_profile_name   = format("%s%s-fargate-%s%s", local.prefix, var.cluster_name, each.value, local.suffix)
   pod_execution_role_arn = aws_iam_role.this[each.value].arn
   subnet_ids             = var.subnet_ids
 
