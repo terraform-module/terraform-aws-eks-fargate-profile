@@ -71,8 +71,8 @@ Here's the gist of using it directly from github.
 | cluster\_name | Cluster name | `string` | n/a | yes |
 | labels | Key-value mapping of Kubernetes labels for selection | `map(string)` | `{}` | no |
 | namespaces | Kubernetes namespace(s) for selection.  Adding more than one namespace, creates and manages multiple namespaces. | `list(string)` | n/a | yes |
-| subnet\_ids | Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER\_NAME (where CLUSTER\_NAME is replaced with the name of the EKS Cluster) | `list(string)` | n/a | yes |
 | prefix | Prefix added to the name. In case your cluster name begins with a reserved string (e.g. `eks-`). | `string` | `""` | no |
+| subnet\_ids | Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: kubernetes.io/cluster/CLUSTER\_NAME (where CLUSTER\_NAME is replaced with the name of the EKS Cluster) | `list(string)` | n/a | yes |
 | suffix | Suffix added to the name. In case we need more then one profile in same namespace | `string` | `""` | no |
 | tags | Additional tags (e.g. `{ Deployed = "xxxx" }` | `map(string)` | `{}` | no |
 
@@ -92,10 +92,10 @@ Here's the gist of using it directly from github.
 
 <!-- START makefile-doc -->
 ```
-$ make help
+$ make help 
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
-changelog                      Update changelog
+changelog                      Update changelog 
 ```
 <!-- END makefile-doc -->
 
